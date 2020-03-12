@@ -27,7 +27,6 @@ var arraySum = function(array) {
     }
 
   }
-  console.log(sum);
   return sum;
 };
 
@@ -44,6 +43,12 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  if (x === y - 1 || x === y || x === y + 1) return [];
+  if (x < y) {
+    return [x+1].concat(range(x+1,y));
+  } else {
+    return [x-1].concat(range(x-1,y));
+  }
 };
 
 // 7. Compute the exponent of a number.
@@ -100,6 +105,8 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if (str1.length === 0 && str2.length === 0) return true;
+  return str1[0] === str2[0] && compareStr(str1.slice(1), str2.slice(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
